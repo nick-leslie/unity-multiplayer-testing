@@ -12,10 +12,14 @@ public class dungionGenaration : MonoBehaviour
     public float chance;
     private bool hadStair = false;
     private Grid grid;
+    [SerializeField]
+    private int Width;
+    [SerializeField]
+    private int Height;
     // Start is called before the first frame update
     void Start()
     {
-        grid = new Grid(20, 20, 10f);
+        grid = new Grid(Width, Height, 10f);
         genarate();
     }
     private void Update()
@@ -30,10 +34,10 @@ public class dungionGenaration : MonoBehaviour
     {
         for (int g = 0; g < rounds; g++)
         {
-            Vector2Int pos = new Vector2Int(10, 10);
+            Vector2Int pos = new Vector2Int(Width/2, Height/2);
             grid.setNum(pos, 1);
             Instantiate(room, grid.getCenterOfCell(pos), room.transform.rotation);
-            if (g==0)
+            if (g == 0)
             {
                 visted.Add(pos);
             }
@@ -44,18 +48,14 @@ public class dungionGenaration : MonoBehaviour
 
                 bool seen = false;
                 //assining Direction
-                Vector2Int direction = RandomDire();
-                if (pos.x ==grid.Width-1 || pos.x ==0)
+                // Vector2Int direction = RandomDire();
+                // pos += direction;
+                Vector2Int nextPos = newPosition(pos);
+                if(Vector2Int.Distance(nextPos,pos)==0)
                 {
-                    direction = new Vector2Int(0, Random.Range(-1, 2));
+                    break;
                 }
-                if (pos.y == grid.Height - 1 || pos.y == 0)
-                {
-                    direction = new Vector2Int(Random.Range(-1, 2), 0);
-                }
-                pos += direction;
-
-
+                pos = nextPos;
                 for (int j = 0; j < visted.Count; j++)
                 {
                     if (Vector2Int.Distance(pos, visted[j]) == 0)
@@ -67,11 +67,9 @@ public class dungionGenaration : MonoBehaviour
                 {
                     visted.Add(pos);
                     grid.setNum(pos, grid.GetNum(pos) + 1);
+                    Debug.Log("added move:" + pos);
                 }
-                else
-                {
-                    i -= 1;
-                }
+               
             }
         }
         Vector2Int furthestPos = visted[0];
@@ -88,34 +86,72 @@ public class dungionGenaration : MonoBehaviour
             SetRooms(visted[i]);
         }
         CreateText.createWorldText(null, "stairs", grid.getCenterOfCell(furthestPos), 20, Color.white, TextAnchor.MiddleCenter, TextAlignment.Center, 2);
-        int[] test = grid.getfourNaboringCells(visted[0]);
-        for (int i = 0; i < test.Length; i++)
-        {
-            print(test[i]);
-        }
     }
   void SetRooms(Vector2Int pos)
-{
-    GameObject SpawnedRoom = Instantiate(room, grid.getCenterOfCell(pos), transform.rotation);
-    RoomManagement maniger = SpawnedRoom.GetComponent<RoomManagement>();
-    if (grid.CheckUPForNabor(pos) == false)
     {
-        maniger.top.SetActive(true);
+        GameObject SpawnedRoom = Instantiate(room, grid.getCenterOfCell(pos), transform.rotation);
+        RoomManagement maniger = SpawnedRoom.GetComponent<RoomManagement>();
+        if (grid.CheckUPForNabor(pos) == false)
+        {
+            maniger.top.SetActive(true);
+        }
+        if (grid.CheckDownForNabor(pos) == false)
+        {
+            maniger.Bottom.SetActive(true);
+        }
+        if (grid.CheckRightForNabor(pos) == false)
+        {
+            maniger.Right.SetActive(true);
+        }
+        if (grid.CheckLeftForNabor(pos) == false)
+        {
+            maniger.Left.SetActive(true);
+        }
     }
-    if (grid.CheckDownForNabor(pos) == false)
+    Vector2Int newPosition(Vector2Int pos)
     {
-        maniger.Bottom.SetActive(true);
+        List<Vector2Int> nabor = new List<Vector2Int>();
+        if (grid.getValidNaborPos(pos, ref nabor))
+        {
+            Vector2Int[] ValledPositions = nabor.ToArray();
+
+            if (ValledPositions.Length > 0)
+            {
+                int choice = Random.Range(0, ValledPositions.Length - 1);
+                Debug.Log("choise:"+choice);
+                // trim nabor List to just the choice
+
+                return ValledPositions[choice];
+            }
+        }
+        return pos;
     }
-    if (grid.CheckRightForNabor(pos) == false)
+    bool edgeCheckX(Vector2Int pos)
     {
-        maniger.Right.SetActive(true);
+        if (pos.x >= grid.Width || pos.x<=0)
+        {
+            return true;
+        }
+        return false;
     }
-    if (grid.CheckLeftForNabor(pos) == false)
+    bool edgeCheckY(Vector2Int pos)
     {
-        maniger.Left.SetActive(true);
+
+        if (pos.y >= grid.Height || pos.y <= 0)
+        {
+            return true;
+        }
+        return false;
     }
-}
-Vector2Int RandomDire()
+    bool cornerCheck(Vector2Int pos)
+    {
+        if (edgeCheckX(pos) && edgeCheckY(pos))
+        {
+            return true;
+        }
+        return false;
+    }
+    Vector2Int RandomDire()
     {
         int x=0;
         int y=0;

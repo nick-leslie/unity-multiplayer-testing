@@ -13,8 +13,18 @@ public class Grid
     private TextMesh[,] textArry;
     public Grid(int _width,int _height,float _cellSize)
     {
-        height = _height;
-        width = _width;
+        if (_height <= 1)
+        {
+            _height = 1;
+        }
+        if (_width <= 1)
+        {
+            _width = 1;
+        }  
+        height = _height - 1;
+        width = _width -1 ;
+
+
         cellSize = _cellSize;
         gridArray = new int[width, height];
         textArry = new TextMesh[width, height];
@@ -22,8 +32,8 @@ public class Grid
         {
             for (int y = 0; y < gridArray.GetLength(1); y++)
             {
-                //textArry[x,y] = CreateText.createWorldText(null, gridArray[x,y].ToString(),getCenterOfCell(x,y), 20, Color.white, TextAnchor.MiddleCenter, TextAlignment.Center, 1);
-                //CreateText.createWorldText(null,x.ToString()+","+y.ToString(), getWorldPos(x, y) + new Vector3(cellSize, cellSize) * .5f + Vector3.down*.5f, 20, Color.white, TextAnchor.MiddleCenter, TextAlignment.Center, 1);
+              //  textArry[x,y] = CreateText.createWorldText(null, gridArray[x,y].ToString(),getCenterOfCell(x,y), 20, Color.white, TextAnchor.MiddleCenter, TextAlignment.Center, 1);
+               // CreateText.createWorldText(null,x.ToString()+","+y.ToString(), getWorldPos(x, y) + new Vector3(cellSize, cellSize) * .5f + Vector3.down*.5f, 20, Color.white, TextAnchor.MiddleCenter, TextAlignment.Center, 1);
                 Debug.DrawLine(getWorldPos(x, y), getWorldPos(x + 1, y), Color.white,100f);
                 Debug.DrawLine(getWorldPos(x, y), getWorldPos(x, y+1), Color.white,100f);
             }
@@ -77,7 +87,32 @@ public class Grid
         //out of bounds
         return -1;
     }
-    public int[] getfourNaboringCells(Vector2Int pos)
+    public bool getValidNaborPos(Vector2Int pos,ref List<Vector2Int> nabor)
+    {
+
+        if (GetNum(pos.x+1,pos.y) == 0)
+        {
+            nabor.Add(new Vector2Int(pos.x+1,pos.y));
+        }
+        if (GetNum(pos.x-1,pos.y) == 0)
+        {
+            nabor.Add(new Vector2Int(pos.x-1,pos.y));
+        }
+        if (GetNum(pos.x,pos.y+1) == 0)
+        {
+            nabor.Add(new Vector2Int(pos.x,pos.y+1));
+        }
+        if (GetNum(pos.x,pos.y-1) == 0)
+        {
+            nabor.Add(new Vector2Int(pos.x,pos.y-1));
+        }
+        if (nabor.Count>0)
+        {
+            return true;
+        }
+        return false;
+    }
+    public int[] getfourNaboringCellsInfo(Vector2Int pos)
     {
         List<int> nabor = new List<int>();
         if (GetNum(new Vector2Int(pos.x+1,pos.y)) != -1)
