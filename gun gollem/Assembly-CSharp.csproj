@@ -63,9 +63,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\CreateText.cs" />
-    <Compile Include="Assets\Grid.cs" />
-    <Compile Include="Assets\dungionGenaration.cs" />
+    <Compile Include="Assets\Scripts\Helper\CreateText.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\Sending\UDPsender.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\TickManiger.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\receving\UDPReceve.cs" />
+    <Compile Include="Assets\Scripts\Player\Movement.cs" />
+    <Compile Include="Assets\Scripts\Random Gen\Grid.cs" />
+    <Compile Include="Assets\Scripts\Random Gen\RoomManagement.cs" />
+    <Compile Include="Assets\Scripts\Random Gen\dungionGenaration.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/nick.leslie/Desktop/programing/gun-gollem-2/gun gollem/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
