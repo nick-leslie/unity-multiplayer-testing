@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e8ccc265c1e5544f83153a79f8b7a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runs: 400
+  runs: 50
   rounds: 1
   room: {fileID: 6223631451482693105, guid: 9c610a2fad305f042abf3e5e7db14aee, type: 3}
   visted: []

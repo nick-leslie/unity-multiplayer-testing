@@ -67,7 +67,6 @@ public class dungionGenaration : MonoBehaviour
                 {
                     visted.Add(pos);
                     grid.setNum(pos, grid.GetNum(pos) + 1);
-                    Debug.Log("added move:" + pos);
                 }
                
             }
@@ -117,7 +116,7 @@ public class dungionGenaration : MonoBehaviour
 
             if (ValledPositions.Length > 0)
             {
-                int choice = Random.Range(0, ValledPositions.Length - 1);
+                int choice = Random.Range(0, ValledPositions.Length);
                 Debug.Log("choise:"+choice);
                 // trim nabor List to just the choice
 
