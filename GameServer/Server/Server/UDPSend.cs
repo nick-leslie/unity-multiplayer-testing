@@ -21,9 +21,11 @@ namespace Server
             IPEndPoint endPoint = new IPEndPoint(IPAddress.Parse(IP), Port);
             UdpClient sender = new UdpClient();
             sender.Connect(endPoint);
-
-            byte[] sendBytes = Encoding.ASCII.GetBytes(pac);
-            sender.Send(sendBytes, sendBytes.Length);
+            if (pac != null) 
+            {
+                byte[] sendBytes = Encoding.ASCII.GetBytes(pac);
+                sender.Send(sendBytes, sendBytes.Length);
+            }
         }
     }
 } 

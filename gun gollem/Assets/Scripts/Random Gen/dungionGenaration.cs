@@ -117,7 +117,7 @@ public class dungionGenaration : MonoBehaviour
             if (ValledPositions.Length > 0)
             {
                 int choice = Random.Range(0, ValledPositions.Length);
-                Debug.Log("choise:"+choice);
+                //Debug.Log("choise:"+choice);
                 // trim nabor List to just the choice
 
                 return ValledPositions[choice];

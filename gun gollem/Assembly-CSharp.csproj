@@ -64,6 +64,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Helper\CreateText.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\OnlinePlayer\onlineMovement.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\Packets\packetCreator.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\Packets\packetReader.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\Sending\UDPsender.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\TickManiger.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\receving\UDPReceve.cs" />

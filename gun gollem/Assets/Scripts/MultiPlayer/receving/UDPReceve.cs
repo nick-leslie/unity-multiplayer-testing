@@ -11,7 +11,7 @@ public class UDPReceve : MonoBehaviour
     private int port;
     IPEndPoint access;
     UdpClient lissener;
-   public LinkedList<string> buffer = new LinkedList<string>();
+    public LinkedList<string> buffer = new LinkedList<string>();
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +22,11 @@ public class UDPReceve : MonoBehaviour
     }
     private void Update()
     {
-        if (buffer.Count > 0)
-        {
-        Debug.Log("value of buffer:" + buffer.Last.Value);
-        buffer.RemoveLast();
-        }
+       // if (buffer.Count > 0)
+       // {
+       // Debug.Log("value of buffer:" + buffer.Last.Value);
+       // buffer.RemoveLast();
+       // }
        // Debug.Log("Buffer count:"+buffer.Count);
       
     }

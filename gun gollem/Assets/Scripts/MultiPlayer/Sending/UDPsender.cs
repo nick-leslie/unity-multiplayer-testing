@@ -10,9 +10,11 @@ public class UDPsender : MonoBehaviour
     private string ip;
     private IPEndPoint endpoint;
     private UdpClient client;
-    public Transform Player;
+    public Movement Player;
+    private string lastJason;
     private void Start()
     {
+        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>(); ;
         TickManiger.OnTick += delegate (object sender, TickManiger.OnTickEventArgs e)
         {
             Test(e.tick);
@@ -24,7 +26,13 @@ public class UDPsender : MonoBehaviour
         IPEndPoint endpoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
         UdpClient client = new UdpClient();
         client.Connect(endpoint);
-        byte[] sendBytes = Encoding.ASCII.GetBytes(tick.ToString());
-        client.Send(sendBytes, sendBytes.Length);
+        string jsonData = JsonUtility.ToJson(Player.input);
+        if (lastJason!= jsonData)
+        {
+            byte[] sendBytes = Encoding.ASCII.GetBytes(jsonData);
+            client.Send(sendBytes, sendBytes.Length);
+            lastJason = jsonData;
+        }
+        
     }
 }
