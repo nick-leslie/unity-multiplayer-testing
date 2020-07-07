@@ -2,45 +2,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System.Timers;
 public class TickManiger : MonoBehaviour
 {
-    public class OnTickEventArgs : EventArgs
-    {
-        public int tick;
-    }
 
-    public static EventHandler<OnTickEventArgs> OnTick;
     // sets how long in between ticks in this case 100 miliseconds
-    private const float TimeBetweenTicks = .05f;
+    [SerializeField]
+    private int TimeBetweenTicks;
 
-    private int Tick;
-    private float TickTimer;
-    private bool ticking=false;
+    public static int Tick;
+    public static Timer tickTimer;
     private void Awake()
     {
         StartTicking();
     }
     void StartTicking()
     {
-        ticking = true;
         Tick = 0;
-    }
-    private void Update()
-    {
-        if (ticking==true)
+        tickTimer = new Timer();
+        tickTimer.Interval = TimeBetweenTicks;
+        tickTimer.Enabled = true;
+        TickManiger.tickTimer.Elapsed += delegate (object sender, System.Timers.ElapsedEventArgs e)
         {
-            TickTimer += Time.deltaTime;
-            if (TickTimer >= TimeBetweenTicks)
-            {
-                TickTimer -= TimeBetweenTicks;
-                Tick++;
-                //if there are subscribers to the event
-                if (OnTick != null)
-                {
-                    OnTick(this, new OnTickEventArgs { tick = Tick });
-                }
-            }
-        }
+            Tick++;
+            Debug.Log("Tick:"+Tick);
+        };
     }
 }

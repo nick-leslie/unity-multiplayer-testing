@@ -15,9 +15,13 @@ public class UDPsender : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<Movement>(); ;
-        TickManiger.OnTick += delegate (object sender, TickManiger.OnTickEventArgs e)
+        //TickManiger.OnTick += delegate (object sender, TickManiger.OnTickEventArgs e)
+        //{
+        //  Test(e.tick);
+        //};
+        TickManiger.tickTimer.Elapsed += delegate (object sender, System.Timers.ElapsedEventArgs e)
         {
-            Test(e.tick);
+            Test(TickManiger.Tick);
         };
     }
     void Test(int tick)

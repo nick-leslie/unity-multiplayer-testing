@@ -6,11 +6,13 @@ namespace Server
 {
     class TickHandler
     {
+        //this is the time between ticks in miliseconds
+        private const int timeBetweenTicks=17;
        public void setup() 
         {
             int Tick = 0;
             Timer UpdateTick = new Timer();
-            UpdateTick.Interval = 100;
+            UpdateTick.Interval = timeBetweenTicks;
             UpdateTick.Enabled = true;
             UpdateTick.Elapsed += (sender, e) => TimerEvent(sender, e,ref Tick);
         }
