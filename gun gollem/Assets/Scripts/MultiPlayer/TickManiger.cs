@@ -25,7 +25,7 @@ public class TickManiger : MonoBehaviour
         TickManiger.tickTimer.Elapsed += delegate (object sender, System.Timers.ElapsedEventArgs e)
         {
             Tick++;
-            Debug.Log("Tick:"+Tick);
+           // Debug.Log("Tick:"+Tick);
         };
     }
 }

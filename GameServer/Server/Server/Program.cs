@@ -2,7 +2,7 @@
 using System.Threading;
 namespace Server
 {
-    class Programswe
+    class Program
     {
         static void Main(string[] args)
         {

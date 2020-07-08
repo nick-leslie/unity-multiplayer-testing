@@ -67,8 +67,10 @@
     <Compile Include="Assets\Scripts\MultiPlayer\OnlinePlayer\onlineMovement.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\Packets\packetCreator.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\Packets\packetReader.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\Sending\TCPsender.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\Sending\UDPsender.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\TickManiger.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\receving\TCPreceveing.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\receving\UDPReceve.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Random Gen\Grid.cs" />
