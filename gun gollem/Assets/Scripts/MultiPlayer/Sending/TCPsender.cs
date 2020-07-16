@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 public class TCPsender : MonoBehaviour
 {
     [SerializeField]
@@ -12,6 +13,10 @@ public class TCPsender : MonoBehaviour
     TcpClient sender;
     NetworkStream stream;
     packetCreator creator;
+    [SerializeField]
+    private string testMessage;
+    [SerializeField]
+    private int testCMD;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +24,8 @@ public class TCPsender : MonoBehaviour
     }
     public void conformWithServer()
     {
-        byte[] pac=creator.createPacet(0, 0,"this is a test");
+        byte[] pac=creator.createPacet(0, testCMD,testMessage);
+        Debug.Log(Encoding.ASCII.GetString(pac));
         send(pac);
     }
     void send(byte[] pac)

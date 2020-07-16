@@ -69,13 +69,15 @@
     <Compile Include="Assets\Scripts\MultiPlayer\Packets\packetReader.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\Sending\TCPsender.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\Sending\UDPsender.cs" />
-    <Compile Include="Assets\Scripts\MultiPlayer\TickManiger.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\State Manigers\TickManiger.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\State Manigers\cndManiger.cs" />
+    <Compile Include="Assets\Scripts\MultiPlayer\State Manigers\roomManiger.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\receving\TCPreceveing.cs" />
     <Compile Include="Assets\Scripts\MultiPlayer\receving\UDPReceve.cs" />
     <Compile Include="Assets\Scripts\Player\Movement.cs" />
     <Compile Include="Assets\Scripts\Random Gen\Grid.cs" />
-    <Compile Include="Assets\Scripts\Random Gen\RoomManagement.cs" />
     <Compile Include="Assets\Scripts\Random Gen\dungionGenaration.cs" />
+    <Compile Include="Assets\Scripts\Random Gen\dungionRoomManiger.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/nick.leslie/Desktop/programing/gun-gollem-2/gun gollem/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

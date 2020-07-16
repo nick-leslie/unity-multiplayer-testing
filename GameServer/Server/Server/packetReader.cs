@@ -11,7 +11,7 @@ namespace Server
         int Mesagelength;
         int packetVarificationLength = 4;
         int cmdByteNum = 1;
-        string packetVerification = "NL36";
+        string packetVerification = "gunG";
         public packetReader()
         {
 

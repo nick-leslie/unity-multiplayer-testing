@@ -89,7 +89,7 @@ public class dungionGenaration : MonoBehaviour
   void SetRooms(Vector2Int pos)
     {
         GameObject SpawnedRoom = Instantiate(room, grid.getCenterOfCell(pos), transform.rotation);
-        RoomManagement maniger = SpawnedRoom.GetComponent<RoomManagement>();
+        dungionRoomManiger maniger = SpawnedRoom.GetComponent<dungionRoomManiger>();
         if (grid.CheckUPForNabor(pos) == false)
         {
             maniger.top.SetActive(true);

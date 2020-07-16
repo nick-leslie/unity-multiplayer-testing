@@ -6,11 +6,16 @@ namespace Server
     {
         static void Main(string[] args)
         {
-            TickHandler timingHandler = new TickHandler();
+            //started udp receving
             UdpResever resever = new UdpResever(11000);
             resever.start();
-            timingHandler.setup();
 
+            //TCP sending
+            TCPsender.setup("127.0.0.1",1235);
+            TCPsender.SendPacket(0, "this is a test message");
+            //tcp reseving
+            TCPrecever recever = new TCPrecever();
+            recever.start(1234);
         }
     }
 }

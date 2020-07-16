@@ -34,4 +34,8 @@ public class TCPreceveing : MonoBehaviour
             Debug.Log(reader.ReadMessage(pac, reader.readHeader(pac)));
         }
     }
+    private void OnDisable()
+    {
+   //     RecvThread.Join();
+    }
 }

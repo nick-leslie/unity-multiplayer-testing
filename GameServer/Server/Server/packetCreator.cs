@@ -9,8 +9,8 @@ namespace Server
         List<Byte> buffer;
         int headerSize = 10;
         int userIDLength = 2;
-        int packetVarificationLength = 4;
-        string packetVerification = "NL36";
+        string packetVerification = "gunG";
+        int MaxCmdNum = 5;
         public packetCreator()
         {
             buffer = new List<byte>();
@@ -54,7 +54,7 @@ namespace Server
         }
         void writeCMD(int _cmd)
         {
-            if (_cmd <= 3)
+            if (_cmd <= MaxCmdNum)
             {
                 buffer.AddRange(Encoding.ASCII.GetBytes(_cmd.ToString()));
             }

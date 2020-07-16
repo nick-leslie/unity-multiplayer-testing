@@ -310,10 +310,11 @@ Assets\Scripts\MultiPlayer\Packets\packetCreator.cs
 Assets\Scripts\MultiPlayer\Packets\packetReader.cs
 Assets\Scripts\MultiPlayer\Sending\TCPsender.cs
 Assets\Scripts\MultiPlayer\Sending\UDPsender.cs
-Assets\Scripts\MultiPlayer\TickManiger.cs
+"Assets\Scripts\MultiPlayer\State Manigers\TickManiger.cs"
+"Assets\Scripts\MultiPlayer\State Manigers\cndManiger.cs"
+"Assets\Scripts\MultiPlayer\State Manigers\roomManiger.cs"
 Assets\Scripts\MultiPlayer\receving\TCPreceveing.cs
 Assets\Scripts\MultiPlayer\receving\UDPReceve.cs
 Assets\Scripts\Player\Movement.cs
 "Assets\Scripts\Random Gen\Grid.cs"
-"Assets\Scripts\Random Gen\RoomManagement.cs"
 "Assets\Scripts\Random Gen\dungionGenaration.cs"

@@ -10,6 +10,7 @@ public class packetCreator
     int userIDLength = 2;
     int packetVarificationLength = 4;
     string packetVerification = "gunG";
+    int MaxCmdNum = 5;
     public packetCreator()
     {
         buffer = new List<byte>();
@@ -53,7 +54,7 @@ public class packetCreator
     }
     void writeCMD(int _cmd)
     {
-        if (_cmd <= 3)
+        if (_cmd <= MaxCmdNum)
         {
             buffer.AddRange(Encoding.ASCII.GetBytes(_cmd.ToString()));
         }

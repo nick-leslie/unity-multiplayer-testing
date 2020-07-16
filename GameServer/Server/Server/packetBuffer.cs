@@ -18,7 +18,7 @@ namespace Server
         }
         public static void RemoveLast()
         {
-            if (_buffer.Count >=1)
+            if (_buffer.Count > 1)
             {
                 _buffer.RemoveLast();
             }        

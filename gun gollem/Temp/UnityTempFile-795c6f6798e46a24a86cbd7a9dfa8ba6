@@ -313,6 +313,7 @@ Assets\Scripts\MultiPlayer\Sending\UDPsender.cs
 Assets\Scripts\MultiPlayer\TickManiger.cs
 Assets\Scripts\MultiPlayer\receving\TCPreceveing.cs
 Assets\Scripts\MultiPlayer\receving\UDPReceve.cs
+Assets\Scripts\MultiPlayer\roomManiger.cs
 Assets\Scripts\Player\Movement.cs
 "Assets\Scripts\Random Gen\Grid.cs"
 "Assets\Scripts\Random Gen\RoomManagement.cs"
